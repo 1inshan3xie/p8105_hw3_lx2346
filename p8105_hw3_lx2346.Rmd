@@ -71,7 +71,7 @@ ny_noaa |>
 ```
 
 ### Is there any observable / interpretable structure? Any outliers?
-It can be observed that **July's tmax is significantly higher than January's**, with most of July's tmax centered around 3 degrees, while most of January's average temperature is centered around 0 degrees. Among the mean maximum temperatures in January, there are three “outliers” around -1 degree Celsius.
+It can be observed that **July's tmax is significantly higher than January's**, with most of July's tmax centered around 30 degrees, while most of January's average temperature is centered around 0 degrees. Among the mean maximum temperatures in January, there are three “outliers” around -10 degree Celsius.
 
 ### Make a two-panel plot showing tmax vs tmin for the full dataset
 ```{r}
@@ -93,6 +93,38 @@ ny_noaa |>
 ```
 
 ### Make a plot showing the distribution of snowfall values greater than 0 and less than 100 separately by year.
+```{r}
+ny_noaa |>
+  filter(snow > 0, snow < 100) |>
+  ggplot(aes(x = year, y = snow)) + 
+  geom_violin(aes(fill = year), alpha = .5) +
+  scale_x_discrete(
+    breaks = c(1981, 1985, 1990, 1995, 2000, 2005, 2010),
+    labels = c("1981", "1985","1990", "1995","2000", "2005", "2010")
+  ) +
+  stat_summary(fun = "median", color = "black", size = .1)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
